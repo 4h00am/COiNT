@@ -2,10 +2,27 @@ import 'package:flutter/material.dart';
 
 class MenuItem extends StatelessWidget {
   final IconData icon;
-  final String text;
+  final String titleText;
+  final FontWeight titleFontWeight;
+  final double titleFontSize;
+  final Color titleColor;
+  final String subtitleText;
+  final FontWeight subtitleFontWeight;
+  final double subtitleFontSize;
+  final Color subtitleColor;
 
-  const MenuItem({Key? key, required this.icon, required this.text})
-      : super(key: key);
+  const MenuItem({
+    Key? key,
+    required this.icon,
+    required this.titleText,
+    this.titleFontWeight = FontWeight.bold,
+    required this.titleFontSize,
+    this.titleColor = Colors.black,
+    required this.subtitleText,
+    this.subtitleFontWeight = FontWeight.normal,
+    required this.subtitleFontSize,
+    this.subtitleColor = Colors.black54,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,10 +32,10 @@ class MenuItem extends StatelessWidget {
         // Icon
         Container(
           constraints: const BoxConstraints(
-            maxHeight: 50,
-            maxWidth: 50,
-            minHeight: 50,
-            minWidth: 50,
+            maxHeight: 60,
+            maxWidth: 60,
+            minHeight: 60,
+            minWidth: 60,
           ),
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -28,10 +45,34 @@ class MenuItem extends StatelessWidget {
         ),
 
         // Spacer
-        const SizedBox(height: 10),
+        const SizedBox(width: 15),
 
-        // Text
-        Text(text),
+        // Name
+
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Title
+            Text(
+              titleText,
+              style: TextStyle(
+                fontWeight: titleFontWeight,
+                fontSize: titleFontSize,
+                color: titleColor,
+              ),
+            ),
+
+            // Subtitle
+            Text(
+              subtitleText,
+              style: TextStyle(
+                fontWeight: subtitleFontWeight,
+                fontSize: subtitleFontSize,
+                color: subtitleColor,
+              ),
+            ),
+          ],
+        ),
       ],
     );
   }

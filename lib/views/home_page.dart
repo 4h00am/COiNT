@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:money_management/views/widgets/logo.dart';
+import 'package:money_management/views/widgets/menu_item.dart';
 import 'package:money_management/views/widgets/photo.dart';
 import 'package:money_management/views/widgets/responsive_button.dart';
+import 'package:money_management/views/widgets/responsive_text.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -19,7 +21,7 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: const Color.fromARGB(255, 242, 236, 235),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(50),
+          padding: const EdgeInsets.all(40),
           child: Row(
             children: [
               // Menu
@@ -44,7 +46,7 @@ class _HomePageState extends State<HomePage> {
                             const Photo(),
 
                             // Spacer
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 15),
 
                             // Name/Function
                             Column(
@@ -52,34 +54,77 @@ class _HomePageState extends State<HomePage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const [
                                 // Nome
-                                Text(
-                                  "Nome",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 14,
-                                    color: Colors.black,
-                                  ),
+                                ResponsiveText(
+                                  text: "Name",
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                  fontColor: Colors.black,
                                 ),
 
                                 //Function
-                                Text(
-                                  "Position",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.black54,
-                                  ),
-                                )
+                                ResponsiveText(
+                                  text: "Position",
+                                  fontSize: 14,
+                                  fontColor: Colors.black54,
+                                ),
                               ],
                             ),
                           ],
                         ),
 
+                        // Spacer
+                        const SizedBox(height: 50),
+
                         // Pages
-                        Padding(
-                            padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
-                            child: Column(
-                              children: [],
-                            )),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: const [
+                            // Wallet
+                            MenuItem(
+                              icon: Icons.wallet_outlined,
+                              titleText: "Wallet",
+                              titleFontSize: 18,
+                              subtitleText: "1.000.000",
+                              subtitleFontSize: 14,
+                            ),
+
+                            // Divider
+                            SizedBox(height: 15),
+
+                            // Payments
+                            MenuItem(
+                              icon: Icons.pie_chart,
+                              titleText: "Payments",
+                              titleFontSize: 18,
+                              subtitleText: "15 facilities",
+                              subtitleFontSize: 14,
+                            ),
+
+                            // Divider
+                            SizedBox(height: 15),
+
+                            // Security
+                            MenuItem(
+                              icon: Icons.lock,
+                              titleText: "Security",
+                              titleFontSize: 18,
+                              subtitleText: "Setup Acess",
+                              subtitleFontSize: 14,
+                            ),
+
+                            // Divider
+                            SizedBox(height: 15),
+
+                            // Team
+                            MenuItem(
+                              icon: Icons.groups,
+                              titleText: "Team",
+                              titleFontSize: 18,
+                              subtitleText: "4 members",
+                              subtitleFontSize: 14,
+                            ),
+                          ],
+                        ),
                       ],
                     ),
 
